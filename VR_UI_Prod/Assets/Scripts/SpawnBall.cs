@@ -9,16 +9,23 @@ public class SpawnBall : MonoBehaviour
     private Vector3 spawnPoint;
     public GameObject ball;
     public GameObject SpawnPointObject;
+    public AudioClip spawnSound;
 
     private void Start()
     {
         button = GetComponent<Button>();
+    }
+
+    private void Update()
+    {
         spawnPoint = SpawnPointObject.transform.position;
     }
 
     public void ButtonOn()
     {
         Instantiate(ball, spawnPoint, Quaternion.identity);
+        AudioSource ac = GetComponent<AudioSource>();
+        ac.PlayOneShot(spawnSound);
     }
 
 }
